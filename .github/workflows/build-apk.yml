@@ -29,14 +29,7 @@ jobs:
 
       - name: Install Node dependencies
         run: |
-          npm install -g npm@11
-          for i in 1 2 3; do
-            echo "npm ci attempt $i"
-            rm -rf node_modules
-            npm ci --no-audit --no-fund --loglevel=warn && break
-            echo "npm ci attempt $i failed, retrying..."
-            sleep 5
-          done
+          npm ci --no-audit --no-fund
           test -x node_modules/.bin/cap
 
       - name: Sync Capacitor Android project
